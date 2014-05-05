@@ -83,17 +83,17 @@ Terminated fibers can be restarted, by use of the fibers.restart() method.
 
 CLASS API:
 
-enum FiberState {
+    enum FiberState {
         FiberCreated,                   // Fiber created, but not yet started
         FiberExecuting,                 // Fiber is executing
         FiberReturned,                  // Fiber has terminated
         FiberInvalid                    // Invalid fiberx value
-};
+    };
 
-template <unsigned max_fibers=16>
-class Fibers {
+    template <unsigned max_fibers=16>
+    class Fibers {
         ...
-public: Fibers(uint32_t main_stack=8192,bool instrument=false,uint32_t pattern_override=0xA5A5A5A5);
+    public: Fibers(uint32_t main_stack=8192,bool instrument=false,uint32_t pattern_override=0xA5A5A5A5);
         inline uint32_t size() { return n_fibers; }     // Return the current # of coroutines
   
         unsigned create(fiber_func_t func,void *arg,uint32_t stack_size);
@@ -106,7 +106,7 @@ public: Fibers(uint32_t main_stack=8192,bool instrument=false,uint32_t pattern_o
         FiberState restart(uint32_t fiberx,fiber_func_t func,void *arg); // Restart fiber after it has terminated
         
         uint32_t stack_size(uint32_t fiberx);           // Return the approximate stack usage for specified coroutine
-};
+    };
 
 
 
