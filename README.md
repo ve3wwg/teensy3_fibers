@@ -11,6 +11,11 @@ Install this directory in your Arduino library folder. On a Mac, this will be in
 ~/Documents/Arduino/libraries. In other words, install these files in the directory (on Mac)
 ~/Documents/Arduino/libraries/fibers.
 
+    $ cd ~/Documents/Arduino/libraries
+    $ git clone git@github.com:ve3wwg/teensy3_fibers.git
+    $ mv teensy3_fibers fibers  # Rename the subdirectory simply as fibers
+
+
 Then start your Arduino IDE, and pull down the menu Sketch->Import Library. At the bottom
 of the menu, underneath "Contributed", select the entry "fibers". If successful, the line
 
