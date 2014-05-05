@@ -14,7 +14,9 @@ Install this directory in your Arduino library folder. On a Mac, this will be in
 Then start your Arduino IDE, and pull down the menu Sketch->Import Library. At the bottom
 of the menu, underneath "Contributed", select the entry "fibers". If successful, the line
 
-	#include <fibers.h> should appear in your sketch.
+	#include <fibers.h> 
+
+should appear in your sketch.
 
 Fibers API Usage:
 -----------------
