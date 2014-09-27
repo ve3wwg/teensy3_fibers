@@ -104,9 +104,9 @@ void loop() {
         
   delay(3000); 
                 
-  fibers.restart(0,foo,0);      // Restart foo(0) at next yield()
-  fibers.restart(1,bar,0);      // Restart bar(0) at next yield()
-  fibers.restart(2,zoo,0);      // etc..
+  fibers.restart(ffoo,foo,0);      // Restart foo(0) at next yield()
+  fibers.restart(fbar,bar,0);      // Restart bar(0) at next yield()
+  fibers.restart(fzoo,zoo,0);      // etc..
 }
 
 // End arduino_fibers.ino
