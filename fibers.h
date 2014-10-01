@@ -109,6 +109,9 @@ extern "C" {
 template <unsigned max_fibers>
 Fibers<max_fibers>::Fibers(uint32_t main_stack,bool instrument,uint32_t pattern_override) {
 
+    for (int i = 0; i < max_fibers; i++) // Initialize fibers to invalid
+        fibers[i].state = FiberInvalid;
+    
 	pattern = pattern_override;	// Fill pattern for stack (when enabled)
 
 	fiber_set_main(main_stack);	// Set stack size needed by the main coroutine
@@ -116,6 +119,7 @@ Fibers<max_fibers>::Fibers(uint32_t main_stack,bool instrument,uint32_t pattern_
 	n_fibers = 1;			// Reserve fibers[0] for main thread
 	cur_crx = 0;			// Main is currently in control
 	fibers[0].stack_size = main_stack; // Save main's stack size
+    fibers[0].state = FiberExecuting; // Set main's state to executing
 
 	this->instrument = instrument;	// Enable/disable instrumentation
 
@@ -187,6 +191,12 @@ Fibers<max_fibers>::yield() {
 	volatile fiber_t& next_cr = fibers[nextx];	// Next context
 	cur_crx = nextx;			// Change the context no.
 
+    // set previous state to created or returned
+    last_cr.state = last_cr.state != FiberReturned ? FiberCreated : FiberReturned;
+    // set current state to excuting or returned
+    next_cr.state = next_cr.state != FiberReturned ? FiberExecuting : FiberReturned;
+
+    
 	fiber_swap(&next_cr,&last_cr);		// Make the switch
 
 	// cur_crx has been restored by the last yield() caller
