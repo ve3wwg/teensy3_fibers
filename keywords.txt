@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map teensy3_fibers
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Fibers	KEYWORD1
+create	KEYWORD1
+current	KEYWORD1
+Serial3Event	KEYWORD1
+yield   KEYWORD1
+state   KEYWORD1
+join   KEYWORD1
+restart   KEYWORD1
+stack_size   KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+fiber_t	KEYWORD2
+FiberState	KEYWORD2
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
